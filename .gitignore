@@ -1,0 +1,7 @@
+# Derleme Klasörleri ve Paketler
+/dist
+/node_modules
+
+# Ortam Değişkenleri
+.env
+.env.*

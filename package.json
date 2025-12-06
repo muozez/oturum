@@ -1,0 +1,31 @@
+{
+  "name": "oturum",
+  "version": "1.0.0",
+  "description": "Operational Tracking Using Rapid Universal Markers",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muozez/oturum.git"
+  },
+  "author": "muozez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muozez/oturum/issues"
+  },
+  "homepage": "https://github.com/muozez/oturum#readme",
+  "dependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.1",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
