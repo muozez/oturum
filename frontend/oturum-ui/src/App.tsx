@@ -1,10 +1,11 @@
 import './App.css'
+import QRCard from './components/QRCard'
 
 function App() {
   return (
-    <>
-      <h1>Hello Oturum :d</h1>
-    </>
+    <div className='main-con'>
+      <QRCard />
+    </div>
   )
 }
 
