@@ -1,11 +1,17 @@
-import Express = require("express");
-import 'dotenv/config';
-const port = process.env.PORT;
-const app = Express();
+import express from 'express';
+import { ENV } from './config/dotenv';
+import { connectDB } from './config/db';
+const app = express();
 
-app.use('/', (req, res)=>{
-    res.status(200);
-    res.json({message: "200"})
-})
+app.use('/', async (req, res)=>{
+    try {
+        await connectDB();
+        res.status(200);
+        res.json({message: "200"})
+    }
+   catch(err){
+        res.status(404).json({message: "Pooling Error"})
+   } 
+});
 
-app.listen(port, ()=> console.log(`Listening at ${port}`))
+app.listen(ENV.PORT, ()=> console.log(`Listening at ${ENV.PORT}`))
