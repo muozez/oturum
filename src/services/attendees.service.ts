@@ -21,7 +21,9 @@ export const createUserService = async (data: CreateUserData) => {
     return await Users.create({
         name: data.name,
         surName: data.surName,
+        email: data.email,
+        telephone: data.telephone,
         deviceToken: uuid(),
-        metadata: data.metadata
+        metadata: data.metadata || {}
     });
 };
