@@ -7,6 +7,15 @@ const route = express.Router();
 
 route.post('/attendee/register', async(req, res)=>{
     try{
+        const exists = await Users.find({
+            email: req.body.email,
+            telephone: req.body.telephone
+        });
+
+        if (exists) {
+            return res.status(400).json({ error: "Telephone number or email address in use"});
+        }
+
         const deviceId = uuid();
         const user = await Users.create({
             name: req.body.name,
