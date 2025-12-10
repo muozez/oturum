@@ -8,17 +8,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/', attendeeRoutes);
 
-app.use('/', async (req, res)=>{
-    try {
-        res.status(200);
-        res.json({message: "200"})
-    }
-   catch(err){
-        res.status(404).json({message: "Pooling Error"})
-   } 
-});
-
 connectDB();
 
 
-app.listen(ENV.PORT, ()=> console.log(`Listening at ${ENV.PORT}`))
+app.listen(ENV.PORT, ()=> console.log(`Listening at http://localhost:${ENV.PORT}`))
