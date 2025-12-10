@@ -12,7 +12,7 @@ route.post('/attendee/register', async(req, res)=>{
             name: req.body.name,
             surName: req.body.surName,
             deviceToken: deviceId,
-            metadata: req.body.metada
+            metadata: req.body.metadata
         })
         return res.json(user);
     } catch(err){
