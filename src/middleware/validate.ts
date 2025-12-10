@@ -12,9 +12,9 @@ export const validate = (schema: ZodSchema<any>)=>{
                     path: e.path.join('.'),
                     message: e.message
                 }))
-                return res.status(400).json({errors})
+                return next(({ status: 400, message: "Validation failed", errors }))
             }
-            return res.status(500).json({error: "Internal Server Error"})
+            return next(({ status: 500, message: "Internal Server Error" }))
         }
     }
 }
