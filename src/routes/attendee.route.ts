@@ -3,9 +3,9 @@ import { ENV } from '../config/dotenv'
 import { v4 as uuid } from 'uuid';
 import Users from '../models/Users.model';
 
-const route = express.Router();
+const router = express.Router();
 
-route.post('/attendee/register', async(req, res)=>{
+router.post('/attendee/register', async(req, res)=>{
     try{
         const exists = await Users.find({
             email: req.body.email,
@@ -29,4 +29,4 @@ route.post('/attendee/register', async(req, res)=>{
     }
 });
 
-export default route;
+export default router;
