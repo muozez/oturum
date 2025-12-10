@@ -8,8 +8,8 @@ const UsersSchema = new Schema({
     registeredAt: { type: Date, default: Date.now },
     metadata: {
         department: String,
-        grade: Number,
+        grade: String,
     }
 });
 
-export default mongoose.model("Users", UsersSchema);
+export default mongoose.models.Users || mongoose.model("Users", UsersSchema);

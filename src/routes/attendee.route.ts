@@ -1,28 +1,19 @@
 import express from 'express';
 import { ENV } from '../config/dotenv'
+import { v4 as uuid } from 'uuid';
 import Users from '../models/Users.model';
-import jwt from 'jsonwebtoken';
 
 const route = express.Router();
 
-
-const createToken = (deviceId: string) => {
-    return jwt.sign({ deviceId }, ENV.JWT_SECRET!, {
-        expiresIn: "1d",
-    });
-};
-
 route.post('/attendee/register', async(req, res)=>{
     try{
-        const token = createToken(req.body.deviceId)
+        const deviceId = uuid();
         const user = await Users.create({
             name: req.body.name,
             surName: req.body.surName,
-            deviceToken: token,
-            metadata: {
-                department: req.body.department,
-                grade: req.body.grade
-            }})
+            deviceToken: deviceId,
+            metadata: req.body.metada
+        })
         return res.json(user);
     } catch(err){
         res.status(500).json({error: err});
