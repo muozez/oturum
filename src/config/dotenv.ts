@@ -1,7 +1,13 @@
 import dotenv from 'dotenv';
-dotenv.config();
 
-export const ENV = {
-    MONGO_URL: process.env.MONGO_URL || null,
-    PORT: process.env.PORT || 3000
+dotenv.config({
+    path: process.env.NODE_ENV === "production"
+        ? ".env.prod"
+        : ".env.dev"
+});
+
+export const ENV = process.env as {
+    MONGO_URL: string,
+    PORT: string,
+    JWT_SECRET: string
 };

@@ -1,17 +1,24 @@
 import express from 'express';
 import { ENV } from './config/dotenv';
 import { connectDB } from './config/db';
+import attendeeRoutes from './routes/attendee.route'
+import { errorHandler } from './middleware/errorhandler';
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
 
-app.use('/', async (req, res)=>{
+app.use('/', attendeeRoutes);
+
+
+const startServer = async () => {
     try {
         await connectDB();
-        res.status(200);
-        res.json({message: "200"})
+        app.use(errorHandler);
+        app.listen(ENV.PORT, ()=>{`Server Listen at http://localhost:${ENV.PORT}`})
+    }catch(err){
+        console.log("Failed to connect DB");
+        process.exit(1);
     }
-   catch(err){
-        res.status(404).json({message: "Pooling Error"})
-   } 
-});
+}
 
-app.listen(ENV.PORT, ()=> console.log(`Listening at ${ENV.PORT}`))
+startServer();

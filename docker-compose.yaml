@@ -1,11 +1,11 @@
 services:
-  node-project:
-    build: .
-    ports:
-      - "${PORT}:3000"
-    restart: always
-    depends_on:
-      - mongo
+  # node-project:
+  #   build: .
+  #   ports:
+  #     - "${PORT}:3000"
+  #   restart: always
+  #   depends_on:
+  #     - mongo
 
   mongo:
     image: mongo:latest
