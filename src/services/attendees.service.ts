@@ -1,7 +1,7 @@
 import Users from '../models/Users.model';
 import { v4 as uuid } from 'uuid';
 
-interface CreateUserData {
+interface UserData {
     name: string;
     surName: string;
     email: string;
@@ -9,7 +9,7 @@ interface CreateUserData {
     metadata?: any;
 }
 
-export const createUserService = async (data: CreateUserData) => {
+export const createUserService = async (data: UserData) => {
     const exists = await Users.findOne({
         $or: [{ email: data.email}, { telephone: data.telephone }]
     });

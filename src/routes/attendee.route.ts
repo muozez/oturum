@@ -4,6 +4,6 @@ import { validateUsers } from '../validators/attendees.validator';
 import { validate } from '../middleware/validate';
 const router = express.Router();
 
-router.post('/attendee/register', validate(validateUsers), registerAttendeeController)
+router.post('/attendee', validate(validateUsers), registerAttendeeController)
 
 export default router;
