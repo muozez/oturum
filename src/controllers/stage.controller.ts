@@ -1,4 +1,4 @@
-import { createSessionService, getSessionsService, patchSessionService } from "../services/stage.service";
+import { createSessionService, getSessionsService, patchSessionService, deleteSessionService } from "../services/stage.service";
 import { Request, Response } from "express";
 
 export const createNewSession = async (req: Request, res: Response)=>{
@@ -36,5 +36,19 @@ export const patchSessions = async (req: Request, res: Response) => {
             return res.status(400).json({error: err.message});
         };
         return res.status(400).json({error: "Unknown Error"})
+    }
+};
+
+export const deleteSession = async (req: Request, res: Response) => {
+    try {
+        const id = Number(req.params.id);
+        const deleted = await deleteSessionService(id);
+        res.json({message: "Delete success", deleted: `id:${id}`});
+    } catch (err: any) {
+        if(err instanceof Error){
+            return res.status(400).json({error: err.message});
+
+        };
+        return res.status(400).json({error: "Unknown Error"});
     }
 }

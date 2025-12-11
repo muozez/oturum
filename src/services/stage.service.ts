@@ -1,3 +1,4 @@
+import SessionsModel from "../models/Sessions.model";
 import Sessions from "../models/Sessions.model";
 import { v4 as uuid } from 'uuid';
 
@@ -49,4 +50,15 @@ export const patchSessionService = async (data: sessionData, id: Number) => {
     );
     if (!updated) throw new Error("Session not found")
     return updated;
+}
+
+export const deleteSessionService = async (id: Number) => {
+    const exists = await Sessions.findOne({_id: id})
+    if(!exists){
+        throw new Error("not found")
+    }
+    const deleted = await Sessions.findOneAndDelete(
+        {_id: id}
+    );
+    return deleted;
 }
