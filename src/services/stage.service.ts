@@ -27,4 +27,13 @@ export const createSessionService = async (data: sessionData) => {
         isActive: data.isActive,
         qrSecurityToken: uuid()
     });
+};
+
+export const getAllSessionsService = async (id: Number) => {
+    if (id){
+        return await Sessions.findOne({
+            _id: id
+        })
+    }
+    return await Sessions.find();
 }
