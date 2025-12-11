@@ -1,7 +1,7 @@
-import { createUserService } from '../services/attendees.service';
+import { createUserService } from '../services/user.service';
 import { Request, Response } from 'express';
 
-export const registerAttendeeController = async (req: Request, res: Response) => {
+export const registerUserController = async (req: Request, res: Response) => {
     try {
         const user = await createUserService(req.body);
         res.json({ message: "Success", user});
