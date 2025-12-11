@@ -37,3 +37,16 @@ export const getSessionsService = async (id: Number) => {
     }
     return await Sessions.find();
 }
+
+export const patchSessionService = async (data: sessionData, id: Number) => {
+    if (!data || !id){
+        throw new Error("Request is empty");
+    };
+    const updated = await Sessions.findOneAndUpdate(
+        {_id: id},
+        data,
+        { new: true }
+    );
+    if (!updated) throw new Error("Session not found")
+    return updated;
+}
