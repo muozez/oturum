@@ -1,4 +1,4 @@
-import { createSessionService, getAllSessionsService } from "../services/stage.service";
+import { createSessionService, getSessionsService } from "../services/stage.service";
 import { Request, Response } from "express";
 
 export const createNewSession = async (req: Request, res: Response)=>{
@@ -16,7 +16,7 @@ export const createNewSession = async (req: Request, res: Response)=>{
 export const getSessions = async (req: Request, res: Response) => {
     try{
         const id = Number(req.params.id)
-        const sessions = await getAllSessionsService(id);
+        const sessions = await getSessionsService(id);
         res.json({message: "Success", sessions});
     } catch (err: any){
         if(err instanceof Error){

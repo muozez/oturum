@@ -29,7 +29,7 @@ export const createSessionService = async (data: sessionData) => {
     });
 };
 
-export const getAllSessionsService = async (id: Number) => {
+export const getSessionsService = async (id: Number) => {
     if (id){
         return await Sessions.findOne({
             _id: id
