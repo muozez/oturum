@@ -12,6 +12,8 @@ services:
     restart: always
     env_file:
       - .env
+    volumes:
+      - oturum-mongo:/etc/data
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
@@ -35,3 +37,6 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASS}
       ME_CONFIG_BASICAUTH_USERNAME: ${ME_USER}
       ME_CONFIG_BASICAUTH_PASSWORD: ${ME_PASS}
+
+volumes:
+  oturum-mongo:
