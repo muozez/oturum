@@ -16,5 +16,8 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "/src"),
     }
+  },
+  server: {
+    allowedHosts: ['.muozez.com', 'localhost', '127.0.0.1']
   }
 })

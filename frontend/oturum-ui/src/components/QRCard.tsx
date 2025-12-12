@@ -1,16 +1,32 @@
-import QRCode from 'react-qr-code';
+import { useRef, useState } from "react";
+import { Scanner, IDetectedBarcode } from "@yudiel/react-qr-scanner";
+import { useNavigate } from "react-router-dom";
 
-function QRCard() {
+export default function QRCard() {
+  const qrRef = useRef<string>("");
+  const [text, setText] = useState("");
+  const navigate = useNavigate();
+
   return (
-    <div className='w-full max-w-xs bg-white p-6 rounded-xl shadow padding-16'>
-        <QRCode value='https://github.com/muozez'
-        size={256}
-        style={{ width: "100%", height: "100%"}}
-        viewBox='0 0 256 256'
-        ></QRCode>
+    <div className="w-full max-w-sm mx-auto">
+      <Scanner
+        allowMultiple={true}
+        onScan={(results: IDetectedBarcode[]) => {
+          if (!results || results.length === 0) return;
 
+          const item = results[0];
+          const value = item.rawValue || item.barcodeText || "";
+
+          if (value && value !== qrRef.current) {
+            qrRef.current = value;
+            setText(value);
+            navigate(`/qr-result?data=${encodeURIComponent(value)}`);
+          }
+        }}
+        onError={(error) => console.error(error)}
+      />
+
+      <h1 className="text-center mt-4 font-bold">{text}</h1>
     </div>
-  )
+  );
 }
-
-export default QRCard
