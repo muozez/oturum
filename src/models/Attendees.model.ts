@@ -1,4 +1,3 @@
-import { Session } from "inspector";
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 

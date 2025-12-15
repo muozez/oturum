@@ -11,6 +11,7 @@ interface sessionData {
     hallName: string;
     isCheckinActive: boolean;
     securityPin: string;
+    sessionOrder: number;
 
 }
 
@@ -18,6 +19,7 @@ export const createSessionService = async (data: sessionData) => {
     return await Sessions.create({
         title: data.title,
         speaker: data.speaker,
+        sessionOrder: data.sessionOrder,
         description: data.description,
         startTime: new Date(data.startTime),
         endTime: new Date(data.endTime),

@@ -3,7 +3,7 @@ import { required } from "zod/v4/core/util.cjs";
 const { Schema } = mongoose;
 
 const SessionsSchema = new Schema({
-    sessionId: Number,
+    sessionOrder: Number,
     title: {type: String, required: true},
     speaker: String,
     description: String,
