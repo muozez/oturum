@@ -17,6 +17,7 @@ export const getSessions = async (req: Request, res: Response) => {
     try{
         const id = Number(req.params.id)
         const sessions = await getSessionsService(id);
+        if (sessions === null) throw new Error("Session Not Found")
         res.json({message: "Success", sessions});
     } catch (err: any){
         if(err instanceof Error){
