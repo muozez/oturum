@@ -3,6 +3,8 @@ import { ENV } from './config/dotenv';
 import { connectDB } from './config/db';
 import attendeeRoutes from './routes/user.route'
 import stageRoute from './routes/stage.route'
+import tokenRoute from './routes/token.route'
+import sessionRoute from './routes/session.route'
 import { errorHandler } from './middleware/errorhandler';
 const app = express();
 app.use(express.json());
@@ -10,6 +12,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/', attendeeRoutes);
 app.use('/stage', stageRoute);
+app.use('/', tokenRoute)
+app.use('/', sessionRoute)
 app.use(errorHandler);
 
 const startServer = async () => {

@@ -7,6 +7,7 @@ interface UserData {
     email: string;
     telephone: string;
     metadata?: any;
+    registrationMethod: string;
 }
 
 export const createUserService = async (data: UserData) => {
@@ -24,6 +25,7 @@ export const createUserService = async (data: UserData) => {
         email: data.email,
         telephone: data.telephone,
         deviceToken: uuid(),
-        metadata: data.metadata || {}
+        metadata: data.metadata || {},
+        registrationMethod: data.registrationMethod || 'qr_scan'
     });
 };
