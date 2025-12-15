@@ -6,10 +6,15 @@ export default function BasicTextFields() {
   return (
     <Box
       component="form"
-      sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+      sx={{ 
+        '& > :not(style)': { m: 1, width: '50ch' },
+        '& .MuiInputBase-input': { color: '#36393B '}
+       }}
       noValidate
-      className='flex flex-col'
+      className='flex justify-center flex-col'
+      
     >
+      <p className='text-center p-0 m-0 text-[#36393B]'>Lütfen Formu Doldurunuz</p>
       <TextField id="outlined-basic" label="İsim" variant="outlined" />
       <TextField id="outlined-basic" label="Soyisim" variant="outlined" />
       <TextField id="outlined-basic" label="Telefon Numarası" variant="outlined" />

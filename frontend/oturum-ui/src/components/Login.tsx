@@ -3,7 +3,7 @@ import BasicTextFields from './ui/form'
 
 const Login = () => {
   return (
-    <div className='flex justify-center h-screen items-center'>
+    <div color='background' className='flex justify-center h-screen items-center'>
     <BasicTextFields />
     </div>
   )
