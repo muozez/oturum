@@ -10,8 +10,7 @@ const SessionsSchema = new Schema({
     startTime: { type: Date, required: true},
     endTime: { type: Date, required: true },
     hallName: String,
-    isCheckinActive: {type: Boolean, default: false},
-    securityPin: { type: String }
+    isCheckinActive: {type: Boolean, default: false}
 });
 
 export default mongoose.model("Sessions", SessionsSchema);
