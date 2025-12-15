@@ -8,4 +8,4 @@ export const createTokenService = async(url: string) => {
     });
     const qUrl = url+`/register?ref=${uniqueCode}`
     return qUrl
-};
+};  
