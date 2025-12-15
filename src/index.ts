@@ -1,7 +1,7 @@
 import express from 'express';
 import { ENV } from './config/dotenv';
 import { connectDB } from './config/db';
-import attendeeRoutes from './routes/attendee.route'
+import attendeeRoutes from './routes/user.route'
 import stageRoute from './routes/stage.route'
 import { errorHandler } from './middleware/errorhandler';
 const app = express();
