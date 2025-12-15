@@ -1,3 +1,4 @@
+import { Session } from "inspector";
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
@@ -12,4 +13,7 @@ const AttendeesSchema = new Schema({
     }
 })
 
+AttendeesSchema.index({ sessionId: 1, userId: 1}, {unique: true});
+AttendeesSchema.index({ userId: 1});
+AttendeesSchema.index({ SessionId: 1});
 export default mongoose.model("Attendees", AttendeesSchema)
