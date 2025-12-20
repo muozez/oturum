@@ -6,6 +6,9 @@ import stageRoute from './routes/stage.route'
 import tokenRoute from './routes/token.route'
 import sessionRoute from './routes/session.route'
 import { errorHandler } from './middleware/errorhandler';
+import swaggerUi from "swagger-ui-express";
+import {swaggerSpec} from "./dev/swagger";
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
@@ -15,6 +18,11 @@ app.use('/stage', stageRoute);
 app.use('/', tokenRoute)
 app.use('/', sessionRoute)
 app.use(errorHandler);
+
+if (process.env.NODE_ENV !== "production") {
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+}
+
 
 const startServer = async () => {
     try {
