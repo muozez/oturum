@@ -3,8 +3,6 @@ import express from 'express';
 
 const router = express.Router();
 
-router.post('/verify-scan', verifyScan)
-
 /**
 * @openapi
 * /verify-scan:
@@ -37,5 +35,6 @@ router.post('/verify-scan', verifyScan)
 *               description: Success
 * 
 */
+router.post('/verify-scan', verifyScan);
 
-export default router
+export default router;
