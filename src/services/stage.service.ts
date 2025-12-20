@@ -31,7 +31,7 @@ export const createSessionService = async (data: sessionData) => {
 export const getSessionsService = async (id: Number) => {
     if (id){
         return await Sessions.findOne({
-            _id: id
+            sessionOrder: id
         })
     }
     return await Sessions.find();
